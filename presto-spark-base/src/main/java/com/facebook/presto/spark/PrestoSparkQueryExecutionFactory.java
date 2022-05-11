@@ -1162,6 +1162,7 @@ public class PrestoSparkQueryExecutionFactory
                         validateStorageCapabilities(tempStorage);
                         RddAndMore<PrestoSparkStorageHandle> childRdd = createRdd(child, PrestoSparkStorageHandle.class);
                         TempDataOperationContext tempDataOperationContext = new TempDataOperationContext(
+                                childFragment.getPartitioning().getConnectorId().map(session::toConnectorSession),
                                 session.getSource(),
                                 session.getQueryId().getId(),
                                 session.getClientInfo(),

@@ -56,6 +56,8 @@ public class TempStorageStandaloneSpillerFactory
     public TempStorageStandaloneSpiller create(Session session)
     {
         TempDataOperationContext tempDataOperationContext = new TempDataOperationContext(
+                // FIXME use ConnectorId
+                Optional.of(session.toConnectorSession()),
                 session.getSource(),
                 session.getQueryId().getId(),
                 session.getClientInfo(),

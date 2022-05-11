@@ -101,6 +101,8 @@ public class TempStorageSingleStreamSpiller
 
         Session session = spillContext.getSession();
         this.tempDataOperationContext = new TempDataOperationContext(
+                // FIXME use ConnectorId
+                Optional.of(session.toConnectorSession()),
                 session.getSource(),
                 session.getQueryId().getId(),
                 session.getClientInfo(),

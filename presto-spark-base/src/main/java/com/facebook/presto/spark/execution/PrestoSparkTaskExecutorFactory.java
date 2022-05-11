@@ -550,6 +550,7 @@ public class PrestoSparkTaskExecutorFactory
         }
 
         TempDataOperationContext tempDataOperationContext = new TempDataOperationContext(
+                fragment.getPartitioning().getConnectorId().map(session::toConnectorSession),
                 session.getSource(),
                 session.getQueryId().getId(),
                 session.getClientInfo(),
